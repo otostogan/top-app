@@ -1,4 +1,4 @@
-import { Button, Htag, P} from "../components";
+import { Button, Htag, P, Tag} from "../components";
 
 export default function Home():JSX.Element{
 	return (
@@ -18,6 +18,21 @@ export default function Home():JSX.Element{
 			<P>
 				Some text	
 			</P>
+			<Tag size="s">
+				Ghost
+			</Tag>
+			<Tag size="m" color="red">
+				red
+			</Tag>
+			<Tag size="s" color='green'>
+				green
+			</Tag>
+			<Tag size="m" color='primary'>
+				primary
+			</Tag>
+			<Tag size="m" color='primary' href="/">
+				primary
+			</Tag>
 		</>
 	);
 }
