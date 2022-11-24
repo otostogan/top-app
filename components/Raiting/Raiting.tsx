@@ -3,7 +3,6 @@ import styles from "./Raiting.module.css";
 import cn from "classnames";
 import StarIcon from "./Star.svg";
 import { useEffect, useState, KeyboardEvent} from "react";
-import handler from "../../pages/api/hello";
 
 export const Rating = ({isEditable = false, rating, setRating, ...props}: RaitingProps):JSX.Element => {
 
