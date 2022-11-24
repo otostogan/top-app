@@ -1,4 +1,4 @@
-import { Htag } from "../components";
+import { Button, Htag } from "../components";
 
 export default function Home():JSX.Element{
 	return (
@@ -6,6 +6,9 @@ export default function Home():JSX.Element{
 			<Htag tag="h1">
 				Some text
 			</Htag>
+			<Button appearance="ghost" arrow="down">
+				Some text
+			</Button>
 		</>
 	);
 }
