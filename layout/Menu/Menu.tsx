@@ -3,20 +3,9 @@ import cn from 'classnames';
 import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
 import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
-import CoursesIcon from './icons/courses.svg';
-import ServicesIcon from './icons/services.svg';
-import BooksIcon from './icons/books.svg';
-import ProductsIcon from './icons/products.svg';
-import { TopLevelCategory } from '../../interfaces/page.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-	{ route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
-	{ route: 'services', name: 'Сервисы', icon: <ServicesIcon />, id: TopLevelCategory.Services },
-	{ route: 'books', name: 'Книги', icon: <BooksIcon />, id: TopLevelCategory.Books },
-	{ route: 'products', name: 'Продукты', icon: <ProductsIcon />, id: TopLevelCategory.Products }
-];
+import { firstLevelMenu } from '../../helpers/helpers';
 
 export const Menu = (): JSX.Element => {
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
@@ -37,12 +26,12 @@ export const Menu = (): JSX.Element => {
 				{firstLevelMenu.map(m => (
 					<div key={m.route}>
 						<Link href={`/${m.route}`}>
-                            <div className={cn(styles.firstLevel, {
-                                [styles.firstLevelActive]: m.id == firstCategory
-                            })}>
-                                {m.icon}
-                                <span >{m.name}</span>
-                            </div>
+							<div className={cn(styles.firstLevel, {
+								[styles.firstLevelActive]: m.id == firstCategory
+							})}>
+								{m.icon}
+								<span >{m.name}</span>
+							</div>
 						</Link>
 						{m.id == firstCategory && buildSecondLevel(m)}
 					</div>
@@ -76,12 +65,10 @@ export const Menu = (): JSX.Element => {
 	const buildThirdLevel = (pages: PageItem[], route: string) => {
 		return (
 			pages.map(p => (
-				<Link legacyBehavior href={`/${route}/${p.alias}`}>
-					<a className={cn(styles.thirdLevel, {
-						[styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath
-					})}>
-						{p.category}
-					</a>
+				<Link href={`/${route}/${p.alias}`} className={cn(styles.thirdLevel, {
+					[styles.thirdLevelActive]: `/${route}/${p.alias}` == router.asPath
+				})}>
+					{p.category}
 				</Link>
 			))
 		);

@@ -1,15 +1,13 @@
 .footer {
 	display: grid;
-
-	padding: 25px 30px;
-
+	grid-template-columns: 1fr auto auto;
+	gap: 10px 40px;
 	color: var(--white);
-	background: var(--primary);
-
 	font-size: 16px;
 	line-height: 20px;
-	grid-template-columns: 1fr auto auto;
-	gap: 40px;
+
+	background: var(--primary);
+	padding: 25px 30px;
 }
 
 .footer a:hover {
@@ -18,8 +16,7 @@
 
 @media (max-width: 765px) {
 	.footer {
-		text-align: center;
 		grid-template-columns: 1fr;
-		gap: 10px;
 	}
+
 }
