@@ -1,4 +1,4 @@
-import { Advantages, Htag, P, Sort, Tag } from '../../components';
+import { Advantages, Htag, Sort, Tag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import styles from './TopPageComponent.module.css';
 import { HhData } from '../../components/hhData/HhData';
