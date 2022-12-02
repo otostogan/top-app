@@ -8,3 +8,4 @@ export * from './Advantages/Advantages';
 export * from './Sort/Sort';
 export * from './Textarea/Textarea';
 export * from './Input/Input';
+export * from './Search/Search';
