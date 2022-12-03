@@ -10,6 +10,7 @@
     "noImplicitAny": false,
     "skipLibCheck": true,
     "strict": true,
+    "useUnknownInCatchVariables": false,
     "strictPropertyInitialization": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
