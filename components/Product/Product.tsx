@@ -7,17 +7,20 @@ import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
 import { decOfNum, priceRu } from '../../helpers/helpers';
 import { Divider } from '../Divider/Divider';
-import Imgage from 'next/image';
+import Image from 'next/image';
 import { ForwardedRef, forwardRef, useRef, useState } from 'react';
 import { Review } from '../Review/Review';
 import { ReviewForm } from '../ReviewForm/ReviewForm';
 import { motion } from 'framer-motion';
 
 export const Product = motion(forwardRef(({ product, className, ...props }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
-
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
-
 	const reviewRef = useRef<HTMLDivElement>(null);
+
+	const variants = {
+		visible: { opacity: 1, height: 'auto' },
+		hidden: { opacity: 0, height: 0 }
+	};
 
 	const scrollToReview = () => {
 		setIsReviewOpened(true);
@@ -31,7 +34,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 		<div className={className} {...props} ref={ref}>
 			<Card className={styles.product}>
 				<div className={styles.logo}>
-					<Imgage
+					<Image
 						src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
 						alt={product.title}
 						width={70}
@@ -51,7 +54,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 				<div className={styles.priceTitle}>цена</div>
 				<div className={styles.creditTitle}>кредит</div>
 				<div className={styles.rateTitle}><a href="#ref" onClick={scrollToReview}>{product.reviewCount} {decOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a></div>
-				<Divider className={cn(styles.hr, styles.hr2)} />
+				<Divider className={styles.hr} />
 				<div className={styles.description}>{product.description}</div>
 				<div className={styles.feature}>
 					{product.characteristics.map(c => (
@@ -75,28 +78,25 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 				<Divider className={cn(styles.hr, styles.hr2)} />
 				<div className={styles.actions}>
 					<Button appearance='primary'>Узнать подробнее</Button>
-					<Button 
-						appearance='ghost' 
-						arrow={isReviewOpened ? 'down' : 'right'} 
+					<Button
+						appearance='ghost'
+						arrow={isReviewOpened ? 'down' : 'right'}
 						className={styles.reviewButton}
 						onClick={() => setIsReviewOpened(!isReviewOpened)}
 					>Читать отзывы</Button>
 				</div>
 			</Card>
-			<Card color='blue' className={cn(styles.reviews, {
-				[styles.opened]: isReviewOpened,
-				[styles.closed]: !isReviewOpened,
-			})}
-				ref={reviewRef}
-			>
-				{product.reviews.map(r => (
-					<div key={r._id}>
-						<Review review={r} />
-						<Divider/>
-					</div>
-				))}
-				<ReviewForm productId={product._id} />
-			</Card>
+			<motion.div animate={isReviewOpened ? 'visible' : 'hidden'} variants={variants} initial='hidden'>
+				<Card color='blue' className={styles.reviews} ref={reviewRef}>
+					{product.reviews.map(r => (
+						<div key={r._id}>
+							<Review review={r} />
+							<Divider />
+						</div>
+					))}
+					<ReviewForm productId={product._id} />
+				</Card>
+			</motion.div>
 		</div>
 	);
 }));
