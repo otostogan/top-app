@@ -24,7 +24,6 @@ export const Menu = (): JSX.Element => {
 			marginBottom: 0
 		}
 	};
-
 	const variantsChildren = {
 		visible: {
 			opacity: 1,
@@ -44,7 +43,7 @@ export const Menu = (): JSX.Element => {
 			return m;
 		}));
 	};
-
+	
 	const buildFirstLevel = () => {
 		return (
 			<>
@@ -64,7 +63,6 @@ export const Menu = (): JSX.Element => {
 			</>
 		);
 	};
-
 	const buildSecondLevel = (menuItem: FirstLevelMenuItem) => {
 		return (
 			<div className={styles.secondBlock}>
@@ -89,7 +87,6 @@ export const Menu = (): JSX.Element => {
 			</div>
 		);
 	};
-
 	const buildThirdLevel = (pages: PageItem[], route: string) => {
 		return (
 			pages.map(p => (
