@@ -33,9 +33,9 @@ a {
 	--font-family: "Noto Sans", sans-serif;
 }
 
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme: dark) {
 	body {
 		color: #000;
-		background: var(--white)!important;
+		background: var(--white) !important;
 	}
 }
