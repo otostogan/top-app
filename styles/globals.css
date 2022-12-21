@@ -22,12 +22,13 @@ a {
 :root {
 	--black: #3B434E;
 	--gray-light: #EBEBEB;
+	--gray-dark: #505359;
 	--white: white;
-	--primary: #7653FC;
+	--primary: #7351f5;
 	--primary-hover: #5F3FDF;
 	--red: #FC836D;
 	--red-light: #f2a092;
-	--green: #1DC37E;
+	--green: #027b49;
 	--green-light: #C8F8E4;
 	--font-family: "Noto Sans", sans-serif;
 }
