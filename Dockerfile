@@ -13,6 +13,6 @@ ENV NODE_ENV production
 RUN npm run build
 RUN npm prune --production
 
-CMD ['npm' 'start']
+CMD ["npm", "start"]
 
 EXPOSE 3000
