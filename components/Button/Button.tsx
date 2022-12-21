@@ -11,7 +11,7 @@ export const Button = ({ appearance, arrow = 'none', children, className, ...pro
 
 	useEffect(() => {
 		scale.onChange(s => console.log(s));
-	}, []);
+	}, [scale]);
 
 	return (
 		<motion.button

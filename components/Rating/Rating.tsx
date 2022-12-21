@@ -8,6 +8,7 @@ export const Rating = forwardRef(({ isEditable = false, error, rating, setRating
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 	const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([]);
 
+	/* eslint-disable */
 	useEffect(() => {
 		constructRating(rating);
 	}, [rating, tabIndex]);
